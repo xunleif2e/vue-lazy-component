@@ -1,0 +1,344 @@
+/***
+ @author ----- ningwenjing 
+ @design ----- huangjunkai 
+ @time   ----- 2016-10-17
+***/
+body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}ol,ul,input{margin:0; padding:0;}body,button,input,select,textarea{font:12px/1.5 \5FAE\8F6F\96C5\9ED1,tahoma,arial,\5b8b\4f53,sans-serif;outline:none;}ul,ol{list-style:none;}a{text-decoration:none;outline:0 none;color: #1a1a1a;}img{border:0;}table{border-collapse:collapse;border-spacing:0;}button{cursor:pointer;}h1,h2,h3,h4,h5{font-weight: normal;}
+.fix:after{visibility:hidden;display:block;font-size:0;content:".";clear:both;height:0;}i,em{font-style: normal;}
+.module-main .niu-rank{float: none !important}
+
+body{margin: 0;background: url(../images/bg1.jpg) 0 / cover fixed;--colorLight:#0f97ff;}
+body::-webkit-scrollbar{width:8px;background: rgba(255,255,255,0);background: transparent;}
+body::-webkit-scrollbar-thumb{background:rgba(0,23,69,.15);border-radius: 6px;}
+body::-webkit-scrollbar-thumb:hover{background: rgba(0,23,69,.25)}
+
+.btn-mod-pre,.btn-mod-next,.cho-word:after,.btn-sea-clear,.ico-v-load,.ico-start{background: url(../img/spr-index.png) no-repeat;}
+.index{width: 1164px;margin: 0 auto;padding: 0 0 100px;}
+.header{height: 70px;position: relative;}
+.nav{position: relative;}
+.nav a{display: inline-block;text-align: center;margin: 0 15px 0 -14px;color: #7f7f7f;}
+.nav .cur{color: #1a1a1a}
+.ico-nav{width: 60px;height: 42px;display: block;vertical-align: middle;margin: 0 auto;background: url(../img/spr-nav.png) 0 -999em no-repeat;}
+
+.search{z-index: 9;position: absolute;right:0;top: 50%;margin-top: -15px}
+.ipt-sea{width: 250px;height: 30px;line-height: 30px;border: solid 1px #ccc;padding: 0 0 0 5px;vertical-align: top;}
+.btn-sea-clear{width: 20px;height: 20px;background-position: -320px -100px;display: block;position: absolute;right: 65px;top: 50%;margin-top: -10px;}
+.btn-sea{width: 54px;height: 32px;line-height: 32px;text-align: center;display: inline-flex;color: #fff;margin:0 0 0 -1px;align-items: center;justify-content: center;}
+.key-word{position: absolute;right: 60px;top: 0;width: 96px;line-height: 28px;color: #999;text-indent: 10px;text-align: left;cursor: pointer;display: none}
+.cho-word:before{content: "";position: absolute;left: 0;border-left: solid 1px #d9d9d9;display: block;height: 14px;top: 8px;}
+.cho-word:after{width: 20px;height: 20px;background-position: -280px -100px;display: block;position: absolute;right: 5px;top: 5px;content: "";}
+.drop-key{width: 100%;height: 150px;border: solid 1px #ccc;background: #fff;position: absolute;top: 27px;right: -1px;box-shadow: 0 2px 2px 1px rgba(0,0,0,0.1);display: none}
+.drop-key a{line-height: 30px;height: 30px;display: block;color: #666 !important;}
+.drop-key a:hover{color: #fff !important;background: var(--colorLight);}
+.key-word.down .cho-word:after{background-position: -300px -100px;}
+.drop-key.light{border-color: red;}
+
+.drop-sea{position: absolute;width:calc(100% - 56px);top: 32px;left: 0;display: none;background: #fff;box-shadow: 0 2px 3px rgba(0,0,0,0.1);border: solid 1px #cfcfcf;border-top: 0;}
+
+/* 2017.06.14 */
+.drop-sea li{line-height: 35px;padding: 0 0 0 12px;font-size: 13px;cursor: pointer;}
+.drop-sea li a{display: block}
+.drop-sea li:hover{background: #e2f2ff}
+.drop-sea .label-type{color: #999;}
+.drop-sea>div{border-bottom: solid 1px #cfcfcf;padding: 5px 0;}
+.drop-sea .sea-user{border: 0;}
+.sea-all{color: #666;padding-left: 40px;line-height: 35px;}
+.sea-all:hover{color: var(--colorLight);}
+.ico-t-sea{width: 20px;height: 18px;background: url(../img/spr-d3.png) -280px -35px no-repeat;display: block}
+.ico-sea-video{width:16px;height: 16px;background: url(../img/spr-d3.png) -320px -35px no-repeat;display: inline-block;vertical-align: -3px;margin: 0 10px 0 0;}
+.pic-sea{width: 24px;height: 24px;display: inline-block;vertical-align: -8px;margin: 0 4px 0 0;}
+.pic-sea img{width: 100%;border-radius: 50%;}
+.sea-times{color: #808080;margin: -14px 10px -6px 27px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.drop-sea .fc-red{display: inline-block;max-width: 5em;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: top;}
+.sea-key{max-width: 9em;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: top;}
+.sea-user .sea-key,.sea-video .sea-key{max-width: 15em;}
+
+/* 轮播图 */
+.banner{position: relative;overflow: hidden;margin: 0 0 20px;}
+.pic-box{position: relative;height: 320px;}
+.pic-box li{position: absolute;left: 0;top: 0;display: none;width: 100%;height: 100%;}
+.pic-box li img{position: absolute;width: 100%;height:340px;bottom: 0;display: block;transition: 1s cubic-bezier(0.23, 1, 0.32, 1);}
+.pic-box li a{display: block;height: 100%;}
+.pic-box:after{width: 100%;height: 70px;background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.8));bottom: 0;left: 0;position: absolute;content: "";display: block;}
+.banner-text{position: absolute;bottom: 10px;left: 12px;color: #fff;font-size: 14px;}
+.text-tit{font-size: 24px;font-weight: 300;}
+.banner-thumb{position: absolute;bottom: 7px;right: 6px;font-size: 0;}
+.banner-thumb a{display: inline-block;position: relative;width: 78px;height: 54px;overflow: hidden;margin: 0 0 0 2px;border: solid 1px rgba(0,0,0,0)}
+.banner-thumb a img{width: 100%;}
+.banner-thumb a:after{width: 100%;height: 100%;position: absolute;content: "";display: block;left: 0;top: 0;background: rgba(0,0,0,0.6);transition: .6s}
+.banner-thumb a:hover{border: solid 1px var(--colorLight)}
+.banner-thumb a:hover:after{opacity: 0;}
+.banner-thumb .cur:after{display: none;}
+.banner-thumb .cur{border-color: #fff;}
+
+/* rec */
+.recommend{height: 320px;overflow: hidden;margin: 0 0 16px;}
+
+
+.video-list{float: right;width: 692px;}
+.video-list ul,.game-list ul{margin: 0 0 0 -16px;}
+.video-list li{width: 220px;height: 152px;position: relative;float: left;margin: 0 0 16px 16px;overflow: hidden;}
+.video-list .pic{display: block;}
+.video-list .pic img{transition: .3s}
+.video-list li:hover img{transform: scale(1.02);}
+.video-list .ico-player{width: 46px;height: 46px;background-position: -60px -170px;top: 40%;}
+.video-text{position: absolute;width: 100%;background: rgba(0,0,0,0.55);height: 32px;line-height:32px;bottom: 0;left: 0;padding: 0 5px;box-sizing: border-box;}
+.video-list .video-name{color: #fff; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 180px;text-indent: 5px;}
+.video-list .video-from{color: #ccc;position: absolute;right: 0;top:0;width: 25px;}
+.enter{width: 126px;height: 34px;line-height: 34px;border:solid 1px rgba(255,255,255,.5);text-align: center;color: #fff;font-size: 14px;display: block;position: absolute;top: 50%;left: 50%;margin: -18px 0 0 -63px;border-radius: 30px;background: rgba(0,0,0,.4);opacity: 0;transition: .2s;transform: scale(0);}
+a:hover .enter,.video-box:hover .enter{transform: scale(1);opacity: 1}
+
+/* 视频列表 */
+.d3-video-list{margin: 12px 0 0;position: relative;height: 186px;}
+.d3-video-list .d3-load-box{margin-top: 30px;}
+.d3-video-list ul{display: flex;}
+.d3-video-list li{width: 265px; height:186px;position: relative;margin: 0 0 0 12px;overflow: hidden;}
+.d3-video-list li:nth-child(1){margin: 0;}
+.d3-video-list li:after{width: 100%;height: 100%;display: block;position: absolute;content: "";pointer-events: none;left: 0;top: 0;background: linear-gradient(rgba(0,17,105,.1) 30%,rgba(0,17,105,.7));z-index: 2}
+.d3-video-list .pic{display: block;height: 100%;}
+.d3-video-list .pic img{width: 100%; display: block;}
+
+.d3-video-list .hor .pic-bg{display: none;}
+.d3-video-list .pic-img{display: block;height: 100%;background-repeat: no-repeat;background-size: cover;background-position: center;}
+.d3-video-list .ver{background: #ccc}
+.d3-video-list .ver .pic-bg{width: 120%;height: 120%;background-size: 120%;filter: blur(10px);position: absolute;left: 0;top: 0;overflow-x: hidden;}
+.d3-video-list .ver .pic-img{width: 200px;height: 100%;background-size: 100% auto;position: relative;z-index: 1;margin: 0 auto;background-position: 0 top}
+
+.d3-video-list .list-con{position: absolute;width: 100%;bottom: 10px;z-index: 3;padding: 0 13px;pointer-events: none;box-sizing: border-box;}
+.d3-video-list .des{color: #fff;font-size: 16px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.ico-label{width: 58px;height: 17px;line-height: 17px;color: #fff;text-indent: 20px;background:url(../img/spr-d3.png) 0 -60px;display: block;}
+.ico-hover{position: absolute;display: block;left: 50%;top:26%;background: rgba(0,0,0,.6);z-index: 3;color: #fff;font-size: 14px;transform: scale(0);opacity: 0;transition: .2s}
+a:hover .ico-hover{opacity: 1; transform: scale(1);}
+.from-video .ico-hover{width:42px;height: 42px; margin: 0 0 0 -21px;border-radius: 50%;}
+.ico-hover:after{display: block;}
+.from-video .ico-hover:after,.index-d3 .ico-player:after{width: 0;height: 0;overflow: hidden;font-size: 0;border-width: 7px 11px;border-color: transparent transparent transparent #fff;border-style: dashed dashed dashed solid;display: block;content:"";position: absolute;left: 17px;top: 15px;}
+.from-pic .ico-hover,.from-jiuwo .ico-hover,.from-room .ico-hover{width: 120px;height: 36px;line-height: 36px;text-align: center;border-radius: 18px;margin: 0 0 0 -60px;}
+.from-pic .ico-hover:after{content: "欣赏美图";}
+.from-jiuwo .ico-hover:after,.from-room .ico-hover:after{content: "进入直播间";}
+.d3-video-list .from-jiuwo:after,.d3-video-list .from-pic:after{background: linear-gradient(rgba(253,17,106,.01),rgba(253,17,106,.4));}
+.d3-video-list .from-game:after{display: none;}
+.from-pic .ico-label{background-position: -120px -60px;}
+.from-jiuwo .ico-label{background-position: -60px -60px;}
+.from-jiuwo .list-con{padding: 0 0 0 60px;}
+.pic-anchor{width: 48px;height: 48px;border-radius: 50%;display: block;overflow: hidden;position: absolute;left: 5px;top: -3px;}
+.pic-anchor img{width: 100%;}
+.from-game .btn-start{width: 78px;height: 26px;line-height: 26px;text-align: center;position: absolute;right: 5px;bottom: 0;border: solid 1px #fff;border-radius: 13px;color: #fff;transition: background .2s}
+.from-game:hover .btn-start{background: #fff;color: #1a1a1a}
+.from-game .des{width: calc(100% - 90px);}
+
+.d3-load{height: 100%;display: -webkit-box;-webkit-box-align:center;text-align: center;-webkit-box-pack:center;}
+.d3-load-box{height: 55px;text-align: center;font-size: 14px;color: #999;display: block;}
+.ico-d3-load{width: 26px;height: 26px;background:url(../img/spr-d3.png) -60px 0;display: inline-block; animation: load 1s both infinite linear;}
+
+.d3-more{display:block;margin-top: 90px;padding:0 0 50px;}
+.nav1 .d3-more{margin-top: 120px;}
+
+
+.module-full .list-con,.module-full:before,.pic-box:after,.banner-text,.game-text,.game-list li:before,.hot-box-list .pic:before{pointer-events: none}
+.ico-player{left: 50%;top:50%;background: rgba(0,0,0,.6);z-index: 3;color: #fff;font-size: 14px;transform: scale(0);opacity: 0;transition: .2s;width: 42px;height: 42px;margin: -21px 0 0 -21px;border-radius: 50%;position: absolute;}
+
+.ico-start,.ico-down{width: 60px;height: 60px;display: block;position: absolute;left: 50%;top: 50%;margin: -25px 0 0 -25px;background-position: 0 -170px;transform: scale(0);transition: .2s;opacity: 0;}
+.ico-start{background-position: 0 -390px;}
+
+::-webkit-scrollbar{width: 4px;background: transparent;}
+::-webkit-scrollbar-thumb{width: 4px;background: rgba(0,23,69,.2);border-radius: 2px;}
+
+.pop-result{width: 100px;height: 30px;line-height: 30px;background: #fff;position: fixed;left: 50%;top: 50%;margin: -15px 0 0 -50px;z-index: 9999;text-align: center;box-shadow: 0 0 5px 2px rgba(0,0,0,.1)}
+.ico-p-fail,.ico-p-suc{width: 18px;height: 16px;display: inline-block;vertical-align: middle;background: url(../img/spr-d3.png)  no-repeat;}
+.ico-p-fail{background-position: -305px -480px;}
+.ico-p-suc{background-position: -330px -480px;}
+
+/* emoji */
+.emoji{width:270px;height: 160px;border: solid 1px #c2cdd6; background: #fff;position: absolute;right:-1px;bottom: 30px;box-shadow: 0 0 5px 2px rgba(0,0,0,0.05);padding:10px 6px;box-sizing: border-box;z-index: 1000;display: none}
+.emoji ul{display: flex;flex-wrap: wrap;height: 140px;overflow-y: auto;margin: 0 auto;}
+.emoji ul li{cursor: pointer;width: 24px;height: 24px;padding: 2px;}
+.emoji ul li:hover{background-color: #ececec;}
+.ico-emoji{vertical-align: -6px;}
+.ico-emoji,.ico-face{width: 24px;height: 24px;background: url(../img/spr-emoji.png) -999em no-repeat;display: inline-block;}
+.ico-face{background-position: 0 0;filter:grayscale(.9) opacity(.7);position: absolute;top: 50%;margin-top: -12px;}
+.ico-face.face-up,.ico-face:hover{filter: none;}
+.emoji-ue415{background-position: -72px -72px;}
+.emoji-ue056{background-position: -120px -72px}
+.emoji-ue057{background-position: -168px -72px}
+.emoji-ue414{background-position: -216px -72px}
+.emoji-ue405{background-position: -264px -72px}
+.emoji-ue106{background-position: -312px -72px}
+.emoji-ue418{background-position: -360px -72px}
+.emoji-ue417{background-position: -408px -72px}
+.emoji-ue40d{background-position: -456px -72px}
+.emoji-ue40a{background-position: -504px -72px}
+.emoji-ue404{background-position: -72px -120px;}
+.emoji-ue105{background-position: -120px -120px;}
+.emoji-ue409{background-position: -168px -120px;}
+.emoji-ue40e{background-position: -216px -120px;}
+.emoji-ue402{background-position: -264px -120px;}
+.emoji-ue108{background-position: -312px -120px;}
+.emoji-ue403{background-position: -360px -120px;}
+.emoji-ue058{background-position: -408px -120px;}
+.emoji-ue407{background-position: -456px -120px;}
+.emoji-ue401{background-position: -504px -120px;}
+.emoji-ue40F{background-position: -72px -168px;}
+.emoji-ue40B{background-position: -120px -168px;}
+.emoji-ue406{background-position: -168px -168px;}
+.emoji-ue413{background-position: -216px -168px;}
+.emoji-ue411{background-position: -264px -168px;}
+.emoji-ue412{background-position: -312px -168px;}
+.emoji-ue410{background-position: -360px -168px;}
+.emoji-ue107{background-position: -408px -168px;}
+.emoji-ue509{background-position: -456px -168px;}
+.emoji-ue416{background-position: -504px -168px;}
+.emoji-ue408{background-position: -72px -216px;}
+.emoji-ue40c{background-position: -120px -216px;}
+.emoji-ue11a{background-position: -168px -216px;}
+
+.emoji-ue541{background-position: -72px -264px;}
+.emoji-ue738{background-position:-120px -264px;}
+.emoji-ue332{background-position:-168px  -264px;}
+.emoji-ue333{background-position:-216px  -264px;}
+.emoji-ue30f{background-position:-264px  -264px;}
+.emoji-jinggao{background-position:-312px  -264px;}
+.emoji-ue252{background-position:-360px  -264px;}
+.emoji-hongdeng{background-position:-408px  -264px;}
+.emoji-landeng{background-position:-456px  -264px;}
+.emoji-ue432{background-position:-504px  -264px;}
+
+.emoji-jgz{background-position:-72px -312px;}
+.emoji-ppx{background-position:-120px -312px;}
+.emoji-lsj{background-position:-168px -312px;}
+.emoji-yyz{background-position:-216px -312px;}
+.emoji-666{background-position:-264px -312px;}
+.emoji-ok{background-position:-312px -312px;}
+.emoji-muzhi{background-position:-360px -312px;}
+.emoji-meitui{background-position:-408px -312px;}
+.emoji-huanggua{background-position:-456px -312px;}
+.emoji-gouyin{background-position:-504px -312px;}
+
+
+/* 会员图标 vip */
+.icvip{display:inline-block;width:42px;height:12px;background:url(../img/ic_vip.png) no-repeat 0 999em;overflow:hidden;vertical-align:-1px;margin: 0 0 0 2px;}
+.icvip00{width: 36px;background-position: 0 0} .icvip01{background-position: -37px 0} .icvip02{background-position: -80px 0} .icvip03{background-position: -123px 0} .icvip04{background-position: -166px 0} .icvip05{background-position: -209px 0} .icvip06{background-position: -252px 0} .icvip00hui{background-position: 0 -18px}
+.icvip00hui{width: 35px;background-position: 0px -18px}.icvip01hui{background-position: -37px -18px} .icvip02hui{background-position: -80px -18px} .icvip03hui{background-position: -123px -18px} .icvip04hui{background-position: -166px -18px} .icvip05hui{background-position: -209px -18px} .icvip06hui{background-position: -252px -18px}
+/* gold vip */
+.icgold00{width: 35px;background-position: 0 -36px} .icgold01{background-position: -37px -36px} .icgold02{background-position: -80px -36px} .icgold03{background-position: -123px -36px} .icgold04{background-position: -166px -36px} .icgold05{background-position: -209px -36px} .icgold06{background-position: -252px -36px} .icgold07{background-position: -295px -36px} .icgold00hui{background-position: 0 -54px}
+.icgold00hui{width: 35px;background-position: 0px -54px} .icgold01hui{background-position: -37px -54px} .icgold02hui{background-position: -80px -54px} .icgold03hui{background-position: -123px -54px} .icgold04hui{background-position: -166px -54px} .icgold05hui{background-position: -209px -54px} .icgold06hui{background-position: -252px -54px} .icgold07hui{background-position: -295px -54px}
+/* super vip */
+.icsuper00{width: 35px;background-position: 0 -72px} .icsuper01{background-position: -37px -72px} .icsuper02{background-position: -80px -72px} .icsuper03{background-position: -123px -72px} .icsuper04{background-position: -166px -72px} .icsuper05{background-position: -209px -72px} .icsuper06{background-position: -252px -72px} .icsuper07{background-position: -295px -72px} .icsuper00hui{background-position: 0 -90px}
+.icsuper00hui{width: 35px;background-position: 0px -90px} .icsuper01hui{background-position: -37px -90px} .icsuper02hui{background-position: -80px -90px} .icsuper03hui{background-position: -123px -90px} .icsuper04hui{background-position: -166px -90px} .icsuper05hui{background-position: -209px -90px}.icsuper06hui{background-position: -252px -90px} .icsuper07hui{background-position: -295px -90px}
+/* another */
+.icnian{width:12px;height:12px; background-position: 0px -108px;vertical-align: 0;margin: 0 0 0 5px;} .icnianhui{width:16px;height:16px; background-position: 0px -128px} .icdongjie{width:16px;height:16px; background-position: -19px -109px}
+.icdongjiehui{width:16px;height:16px; background-position: -19px -128px} .icshuai{width:16px;height:16px; background-position: -38px -108px} .icshuaihui{width:16px;height:16px; background-position: -38px -128px}
+.icqiye{width:16px;height:16px; background-position: -57px -109px} .icqiyehui{width:16px;height:16px; background-position: -57px -128px}
+.ichongren{width:16px;height:16px; background-position: -76px -109px} .ichongrenhui{width:16px;height:16px; background-position: -76px -128px}
+.icbao{width:16px;height:16px; background-position: -95px -109px} .icbaohui{width:16px;height:16px; background-position: -95px -128px}
+.icxun{width:15px;height:16px; background-position: -116px -109px} .icxunhui{width:15px;height:16px; background-position: -116px -128px}
+.icgold{width:15px;height:16px; background-position: -136px -109px} .icgoldhui{width:15px;height:14px; background-position: -136px -128px}
+.icgrow{width:12px;height:14px; background-position: -155px -109px;} .icdown{width:12px;height:14px; background-position: -155px -128px;}
+.ickuainiao{background-position: -338px 0;width: 36px;}
+.icshangxing{background-position: -380px 0;width: 36px}
+
+.ico-publish{width: 36px;height: 12px;background: url(../img/spr-d3.png) -50px -40px;overflow:hidden;vertical-align:-2px;margin: 0 0 0 2px;display: inline-block;}
+
+
+a:hover .ico-player,a:hover .ico-start,a:hover .ico-down{transform: scale(1);opacity: 1}
+
+.fav-kankan,.fav-qiyi,.fav-youku,.fav-letv,.fav-pps,.fav-tudou,.fav-pptv,.fav-sohu,.fav-taomi,.fav-qq,.fav-56,.fav-baofeng,.fav-funshion,.fav-wasu,.fav-hunantv,.fav-cntv,.fav-kkvip,.fav-youliao,.fav-xmp,.fav-jw,.fav-niux{background:url(../img/ico-from.png) no-repeat;display: inline-block;width: 24px;height: 23px;vertical-align: -7px;margin: 0 0 0 -2px;}
+.drop-from span{vertical-align: middle;}
+.fav-kankan {background-position:0 0;}
+.fav-qiyi {background-position:0 -24px;}
+.fav-youku {background-position:0 -48px;}
+.fav-letv {background-position:0 -72px;}
+.fav-pps {background-position:0 -96px;}
+.fav-tudou {background-position:0 -120px;}
+.fav-pptv {background-position:0 -144px;}
+.fav-sohu {background-position:0 -168px;}
+.fav-taomi {background-position:0 -192px;}
+.fav-qq {background-position:0 -216px;}
+.fav-56 {background-position:0 -240px;}
+.fav-baofeng {background-position:0 -264px;}
+.fav-funshion {background-position:0 -288px;}
+.fav-wasu {background-position:0 -312px;}
+.fav-hunantv {background-position:0 -336px;}
+.fav-cntv {background-position:0 -360px;}
+.fav-kkvip {background-position:0 -384px;}
+.fav-youliao{background-position: 0 -432px;}
+.fav-xmp{background-position: 0 -456px;}
+.fav-jw{background-position: 0 -479px;}
+.fav-niux{background-position: 0 -502px;}
+
+/* type */
+.ico-type{width: 32px;height: 32px;display: inline-block;margin: 0 8px 0 0;background: url(../img/spr-icon.png) no-repeat;}
+.ico-bt-file{background-position: 0 0}
+.ico-bt-link{background-position: -32px 0}
+.ico-chm{background-position: -64px 0}
+.ico-xls{background-position: -96px 0}
+.ico-link{background-position: -128px 0}
+.ico-pdf{background-position: -160px 0}
+.ico-doc{background-position: -192px 0}
+.ico-ppt{background-position: -224px 0}
+.ico-txt{background-position: -256px 0}
+.ico-word{background-position: -288px 0}
+.ico-install{background-position: -320px 0}
+.ico-music{background-position: -352px 0}
+.ico-unknow{background-position: -384px 0}
+.ico-pic{background-position: -416px 0}
+.ico-apk{background-position: -448px 0}
+.ico-exe{background-position: -480px 0}
+.ico-ipa{background-position: -512px 0}
+.ico-ipsw{background-position: -544px 0}
+.ico-iso{background-position: -576px 0}
+.ico-group{background-position: -608px 0}
+.ico-video{background-position: -832px 0}
+.ico-avi{background-position: -640px 0}
+.ico-flv{background-position: -672px 0}
+.ico-mkv{background-position: -704px 0}
+.ico-mov{background-position: -736px 0}
+.ico-mp4{background-position: -768px 0}
+.ico-mpg{background-position: -800px 0}
+.ico-rm{background-position: -864px 0}
+.ico-rmvb{background-position: -896px 0}
+.ico-wmv{background-position: -928px 0}
+.ico-rar{background-position: -960px 0}
+
+/* skin */
+.fc-main{color: var(--colorLight)}
+.link-com:hover{color: var(--colorLight) !important}
+.bg-com,.hv-com:hover{background: #1097fa !important;transition:background .5s}
+a.bg-com:hover{background: #3eabff !important}
+.fc-red{color: #ff4848;}
+
+
+.skin01 .title a,.skin01 .nav .cur,.skin03 .title a,.skin03 .nav .cur,.skin01 .module-rank h3,.skin03 .module-rank h3,.skin01 h4,.skin03 h4{color: #fff;}
+.skin01 .nav a,.skin03 .nav a{color: #ccc}
+
+
+/* error */
+.error-page{width:100vw;height:100vh;position: absolute;top: 50%;color: #86c8ff;left: 0;display: flex;align-items: center;justify-content: center;}
+.error-page .pic-error{width:280px;height:260px;margin: 0 auto ;background: url(../img/spr-tips.png) no-repeat;line-height: 500;overflow: hidden;}
+.error-page .network{background-position: 0 -300px;}
+.error-page .not-exist{background-position: 0 -560px;}
+.error-page .btn-refresh{width: 100px;height: 34px;line-height: 34px;background: #409cf7;color: #fff;font-size: 14px;margin: 10px auto;display: block;}
+.btn-refresh:hover{background:#58acff}
+.txt-error{line-height: 45px;}
+
+@media only screen and (max-width:930px) , only screen and (max-height: 600px){
+	.sea-user .sea-key, .sea-video .sea-key{max-width: 14em;}
+	.drop-sea .fc-red{max-width: 3em;}
+	
+}
+@media only screen and (min-width: 931px) and (max-width:1040px) , only screen and (min-height: 601px) and (max-height: 670px){
+	.from-video .ico-hover{margin: -11px 0 0 -21px;}
+}
+/* @media only screen and (max-width: 810px), only screen and (max-height: 578px){
+	.index-d3{zoom:.775}
+	.center-box{margin: 50px 0 0;}
+} */
+/* animation */
+.ico-v-load{animation: load 1s both infinite linear;}
+@keyframes load{
+	0%{transform: rotate(0);}
+	100%{transform: rotate(360deg);}
+}
+/* temp */
+.game-list li{position: relative;float: left;}
+
+

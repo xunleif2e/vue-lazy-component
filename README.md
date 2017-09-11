@@ -2,7 +2,9 @@
 
 > Vue.js 2.0 组件级懒加载方案
 
-![Preview](https://github.com/binggg/vue-lazy-component/blob/master/demo/assets/demo.jpeg?raw=true)
+- 支持 组件可见或即将可见时懒加载
+- 支持 组件延时加载
+- 支持 加载组件前展示组件骨架，提高用户体验
 
 ## 安装
 ```
@@ -20,20 +22,20 @@ https://xunleif2e.github.io/vue-lazy-component/demo/dist
 #### 方式1 利用插件方式全局注册
 
 ```javascript
-import VueContextMenu from '@xunlei/vue-lazy-component'
+import VueLazyComponent from '@xunlei/vue-lazy-component'
 import Vue from 'vue'
 
-Vue.use(VueContextMenu)
+Vue.use(VueLazyComponent)
 ```
 #### 方式2 局部注册
 
 ```javascript
-import { component as VueContextMenu } from '@xunlei/vue-lazy-component'
+import { component as VueLazyComponent } from '@xunlei/vue-lazy-component'
 
 export default {
   // ...
   components: {
-    'vue-lazy-component': VueContextMenu
+    'vue-lazy-component': VueLazyComponent
   }
 }
 ```
@@ -47,22 +49,26 @@ export default {
 
 ### 2. 模版语法
 ```html
- <context-menu class="right-menu"
-    :target="contextMenuTarget"
-    :show="contextMenuVisible"
-    @update:show="(show) => contextMenuVisible = show">
-    <a href="javascript:;" @click="copyMsg">复制</a>
-    <a href="javascript:;" @click="quoteMsg">引用</a>
-    <a href="javascript:;" @click="deleteMsg">删除</a>
-</context-menu>
+ <vue-lazy-component
+  @init="init"
+  @beforeInit="beforeInit"
+ >
+  <!--需要懒加载的组件-->
+  <st-series-sohu/>
+  <!--在加载之前展示的骨架组件-->
+  <st-series-sohu-skeleton slot="skeleton"/>
+</vue-lazy-component>
 ```
 
 ## Props
 
 | 参数                    | 说明  | 类型 | 可选值 | 默认值 |
 |-------------------------|-------|------|--------|--------|
-| target | 触发右键事件的元素  | Element | -      | -      |
-| show | 是否显示右键菜单  | Boolean | -      | false      |
+| viewport | 组件的视口，如果组件是在页面容器内滚动，视口就是该容器 | HTMLElement | true      | `null`，代表window |
+| direction | 视口的滚动方向, `vertical`代表垂直方向，`horizontal`代表水平方向  | String | true      | `vertical` |
+| threshold | 预加载阀值, css单位  | String | true      | `0px` |
+| tagName | 包裹组件的外层容器的标签名  | String | true  | `div` |
+| timeout | 等待时间，如果指定了时间，不论可见与否，在指定时间之后自动加载  | Number | true    | - |
 
 
 ## Events
@@ -74,17 +80,28 @@ export default {
 
 ## 注意
 
-如果target是某个兄弟元素，可以使用 `$refs`来访问，但是注意请在父组件mounted 之后获取。
+> 该项目依赖 [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)，如需在较低版本浏览器运行，需要引入 polyfill
 
-参考 https://cn.vuejs.org/v2/guide/components.html#子组件索引
+### IntersectionObserver API 桌面端兼容性
 
+| Feature       | Chrome | Edge | Firefox (Gecko) | Internet Explorer | Opera | Safari (WebKit)   |
+|---------------|--------|------|-----------------|-------------------|-------|-------------------|
+| Basic support | 51     | 15   | 55 (55)[1][2]   | No support        | 38    | WebKit bug 159475 |
+
+
+### IntersectionObserver API 移动端兼容性
+
+| Feature       | Android Webview | Chrome for Android | Firefox Mobile (Gecko) | Firefox OS | IE Mobile  | Opera Mobile | Safari Mobile     |
+|---------------|-----------------|--------------------|------------------------|------------|------------|--------------|-------------------|
+| Basic support | 51              | 51                 | 55.0 (55)[1][2]        | No support | No support | 38           | WebKit bug 159475 |
+
+### IntersectionObserver API polyfill
+
+https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill
 
 ## ChangeLog
-- [1.0.1] 2017-07-10
-  - 修复 target 为空时可能出错的bug
-
-- [1.0.0] 2017-06-23
-  - 实现右键菜单基本功能
+- [1.0.0] 2017-09-11
+  - 实现懒加载组件的基本功能
 
 ## Development Setup
 

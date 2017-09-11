@@ -1,0 +1,66 @@
+.side-jr{position: fixed;right: 0;bottom:70px;right: 0;cursor: pointer;z-index: 99}
+.ani-jr{width: 66px;height: 62px;background: url(../img/jinrong/spr-jr-ani.png) no-repeat;display: block;}
+.drop-jr{width: 214px;height: 182px;background: #fff;z-index: 9;position: absolute;right: 66px;top: 50%;margin-top: -142px;display: none;}
+.side-jr-ban{height: 60px;background: url(../img/jinrong/spr-jr.png) no-repeat;}
+.side-jr-main{color: #333;}
+.drop-jr:after{content: '';width: 0;height: 0;border-style: dashed;border-color: transparent;border-left-style:solid;border-left-color: #fff;position: absolute;right: -16px;border-width: 7px 8px;top: 50%;margin-top: 52px; }
+.side-jr-ban h3{font-size: 18px;color: #fff;text-align: center;line-height: 60px;}
+.btn-side-jr{width: 108px;height: 30px;line-height: 30px;background: #f52f3e;border-radius: 15px;color: #fff;display: block;margin: 0 auto;text-align: center;font-size: 14px;transition: background .2s}
+.btn-side-jr:hover{background: #fd3f4e;}
+.fc-jr{color: #f52f3e;}
+.txt-jr{padding: 16px 0;font-size: 14px;text-align: center;}
+.ani-jr{animation: a01 .8s steps(14) both, a02 .5s .8s steps(14) infinite;}
+.side-jr:hover .ani-jr{animation: a03 1.4s steps(19) both, a04 1s 1.4s steps(10) infinite;}
+.jr-tips{position: absolute;top: -39px;width: 51px;height: 45px;background: url(../img/jinrong/spr-jr.png) 0 -60px no-repeat;right: 12px;padding: 5px;box-sizing: border-box;text-align: center;line-height: 1.2;color: #666;animation: tipsShow .3s .4s both;transform-origin: 32px 42px;}
+.side-jr:hover .drop-jr{display: block;animation: drop .2s both;}
+.side-jr:hover .jr-tips{animation: tipsHide .6s both}
+.tips-get{display: none}
+.side-jr.jr-get .tips-get{display: block;}
+.side-jr.jr-get .ani-jr{animation: a05 .5s steps(14) infinite;}
+.side-jr.jr-get:hover .ani-jr{animation: a06 .3s steps(6), a07 .4s .3s steps(11) infinite;}
+.main-af{display: none;}
+.side-jr.jr-get .main-af{display: block;}
+.side-jr.jr-get .main-bf{display: none;}
+
+@keyframes drop{
+    0%{opacity:0;transform:scale(.3)}
+    100%{opacity:1;transform:scale(1)}
+}
+@keyframes tipsShow{
+    0%{opacity:0;transform:scale(.3)}
+    100%{transform:scale(1)}
+}
+@keyframes tipsHide{
+    0%{opacity:1;transform:scale(1)}
+    100%{opacity:0;transform:scale(0)}
+}
+
+@keyframes a01{
+    0%{background-position: 0 0;}
+    100%{background-position: -924px 0;}
+}
+@keyframes a02{
+    0%{background-position: 0 -62px;}
+    100%{background-position: -924px -62px;}
+}
+
+@keyframes a03{
+    0%{background-position: 0 -124px;}
+    100%{background-position: -1254px -124px;}
+}
+@keyframes a04{
+    0%{background-position: 0 -186px;}
+    100%{background-position: -660px -186px;}
+}
+@keyframes a05{
+    0%{background-position: 0 -248px;}
+    100%{background-position: -924px -248px;}
+}
+@keyframes a06{
+    0%{background-position: 0 -310px;}
+    100%{background-position: -396px -310px;}
+}
+@keyframes a07{
+    0%{background-position: 0 -372px;}
+    100%{background-position: -726px -372px;}
+}

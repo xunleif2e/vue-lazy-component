@@ -7,7 +7,6 @@
       <slot name="skeleton"></slot>
     </div>
     <div v-else key="loading">
-      loading
     </div>
   </transition-group>
 </template>
@@ -15,7 +14,7 @@
 <script>
   export default {
     name: 'VueLazyComponent',
-    
+
     props: {
       timeout: {
         type: Number
@@ -74,21 +73,14 @@
     },
 
     beforeDestroy () {
-      if (!this.io) {
+      if (this.io) {
         this.io.unobserve(this.$el)
       }
     },
 
     methods: {
-      intersectionHandler ([ {
-        time,
-        rootBounds,
-        boundingClientRect,
-        intersectionRect,
-        intersectionRatio,
-        target
-      } ]) {
-        if (intersectionRatio > 0) {
+      intersectionHandler (entries) {
+        if (entries[0].intersectionRatio > 0) {
           this.init()
           this.io.unobserve(this.$el)
         }
@@ -96,27 +88,14 @@
 
       init () {
         this.$emit('beforeInit')
-        this.requestIdleCallback((deadline) => {
-          // console.log('idleCallback', deadline.timeRemaining(), window.performance.now() - start)
+        this.requestAnimationFrame(() => {
           this.isInit = true
           this.$emit('init')
-        }, {
-          timeout: 50
         })
       },
 
-      requestIdleCallback (...args) {
-        return (window.requestIdleCallback || ((cb) => {
-          let start = Date.now()
-          return setTimeout(() => {
-            cb({
-              didTimeout: false,
-              timeRemaining: function () {
-                return Math.max(0, 50 - (Date.now() - start))
-              }
-            })
-          }, 1)
-        }))(...args)
+      requestAnimationFrame (callback) {
+        return (window.requestAnimationFrame || ((callback) => setTimeout(callback, 1000 / 60)))(callback)
       }
     }
   }

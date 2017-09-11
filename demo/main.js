@@ -4,14 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-const vueContextMenu = process.env.NODE_ENV === 'development'
+const vueLazyComponent = process.env.NODE_ENV === 'development'
   ? require('../src/vue-lazy-component.js')
   : require('../dist/vue-lazy-component.js')
 
 Vue.config.productionTip = false
 
 // Using plugin
-Vue.use(vueContextMenu)
+Vue.use(vueLazyComponent)
 
 /* eslint-disable no-new */
 new Vue({
