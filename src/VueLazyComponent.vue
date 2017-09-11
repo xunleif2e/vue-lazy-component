@@ -1,7 +1,12 @@
 <template>
-  <transition-group :tag="tagName" name="lazy-component" style="position: relative;">
+  <transition-group :tag="tagName" name="lazy-component" style="position: relative;"
+    @before-enter="(el) => $emit('before-enter', el)"
+    @before-leave="(el) => $emit('before-leave', el)"
+    @after-enter="(el) => $emit('after-enter', el)"
+    @after-leave="(el) => $emit('after-leave', el)"
+  >
     <div v-if="isInit" key="component">
-      <slot></slot>
+      <slot :loading="loading"></slot>
     </div>
     <div v-else-if="$slots.skeleton" key="skeleton">
       <slot name="skeleton"></slot>
@@ -41,7 +46,8 @@
       return {
         isInit: false,
         timer: null,
-        io: null
+        io: null,
+        loading: false
       }
     },
 
@@ -88,6 +94,8 @@
 
       init () {
         this.$emit('beforeInit')
+        this.$emit('before-init')
+        this.loading = true
         this.requestAnimationFrame(() => {
           this.isInit = true
           this.$emit('init')

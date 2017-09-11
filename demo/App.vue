@@ -5,6 +5,7 @@
       <router-link class="link" to="/large-page">Demo1: 超长页面懒加载</router-link>
       <router-link class="link" to="/timeout">Demo2: 延时加载</router-link>
       <router-link class="link" to="/custom-transition">Demo3: 自定义过渡效果</router-link>
+      <router-link class="link" to="/large-page-chunks">Demo4: 超长页面懒加载（分包）</router-link>
     </header>
     <router-view class="page-container"></router-view>
   </div>
@@ -47,7 +48,7 @@
     top: 0;
     z-index: 199;
     width: 100%;
-    background: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, .95);
     padding: 24px;
     text-align: center;
   }
@@ -83,6 +84,19 @@
   .router-link-active {
     color: #42b983;
     font-weight: bold;
+  }
+
+  summary {
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 3;
+    background:rgba(255,255,255,.9);
+    padding: 10px 16px;
+    margin: 8px 0;
+  }
+
+  summary:focus {
+    outline: none;
   }
 </style>
 

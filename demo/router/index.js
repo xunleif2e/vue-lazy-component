@@ -11,11 +11,11 @@ const router = new Router({
       alias: '/',
       component: (resolve) => require(['../views/LargePage'], resolve)
     },
-    // {
-    //   path: '/large-page-chunks',
-    //   name: 'LargePageChunks',
-    //   component: (resolve) => require(['../views/LargePageChunks'], resolve)
-    // },
+    {
+      path: '/large-page-chunks',
+      name: 'LargePageChunks',
+      component: (resolve) => require(['../views/LargePageChunks'], resolve)
+    },
     {
       path: '/large-page-not-lazy',
       name: 'LargePageNotLazy',

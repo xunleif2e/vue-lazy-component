@@ -70,12 +70,17 @@ export default {
 | tagName | 包裹组件的外层容器的标签名  | String | true  | `div` |
 | timeout | 等待时间，如果指定了时间，不论可见与否，在指定时间之后自动加载  | Number | true    | - |
 
-
 ## Events
 
 | 事件名                    | 说明  | 事件参数
 |-------------------------|-------|------|
-| update:show | 右键菜单显示/隐藏时触发  | 是否显示 |
+| before-init | 模块可见或延时截止导致准备开始加载懒加载模块 | - |
+| init | 开始加载懒加载模块，此时骨架组件开始消失 | - |
+| before-enter | 懒加载模块开始进入 | el |
+| before-leave | 骨架组件开始离开 | el |
+| after-leave | 骨架组件已经离开 | el |
+| after-enter | 懒加载模快已经进入 | el |
+| after-init | 初始化完成 | - |
 
 
 ## 注意

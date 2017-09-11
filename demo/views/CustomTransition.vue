@@ -3,7 +3,7 @@
         <div class="index-d3 switch">
             <div class="d3-more" style="display: block;">
                 <h2>自定义骨架组件和真实组件切换的过渡效果</h2>
-                <details open="true">
+                <details>
                   <summary>查看代码示例</summary>
                   <pre v-highlightjs="code"><code class="css">{{ code }}</code></pre>
                 </details>

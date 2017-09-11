@@ -2,8 +2,8 @@
     <div style="height: 100%;">
         <div class="index-d3 switch">
             <div class="d3-more" style="display: block;">
-                <h2>模块即将可见时自动加载</h2>
-                <details open="true">
+                <h2>组件将可见时自动加载</h2>
+                <details>
                   <summary>查看代码示例</summary>
                   <pre v-highlightjs="code"><code class="html">{{ code }}</code></pre>
                 </details>
