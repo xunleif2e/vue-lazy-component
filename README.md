@@ -1,5 +1,8 @@
 # Vue Lazy Component
 
+
+[![npm version](https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component.svg)](https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component)
+
 > Vue.js 2.0 组件级懒加载方案
 
 - 支持 组件可见或即将可见时懒加载
