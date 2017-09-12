@@ -96,7 +96,7 @@
     methods: {
       // 交叉情况变化处理函数
       intersectionHandler (entries) {
-        if (entries[0].intersectionRatio > 0) {
+        if (entries[0].isIntersecting) {
           this.init()
           this.io.unobserve(this.$el)
         }
