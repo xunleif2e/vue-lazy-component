@@ -2,10 +2,15 @@
     <div style="height: 100%;" class="custom-transition">
         <div class="index-d3 switch">
             <div class="d3-more" style="display: block;">
-                <h2>自定义骨架组件和真实组件切换的过渡效果</h2>
+                <h2>自定义骨架组件和真实组件切换的过渡效果（默认是淡入淡出）</h2>
                 <details>
                   <summary>查看代码示例</summary>
+                  <h3>Style</h3>
                   <pre v-highlightjs="code"><code class="css">{{ code }}</code></pre>
+
+                  <h3>Template</h3>
+                  <pre v-highlightjs="template"><code class="html">{{ template }}</code></pre>
+
                 </details>
                 <template v-for="i in 10">
                     <vue-lazy-component class="custom-transition">
@@ -64,12 +69,6 @@ export default {
       StMoJinSkeleton
     },
 
-    methods: {
-        reportFirstScreen () {
-
-        }
-    },
-
     data () {
       return {
         code: `.custom-transition .lazy-component-enter {
@@ -99,7 +98,31 @@ export default {
 
 .custom-transition .lazy-component-leave-active {
   transition: all 0.5s;
-}`
+}`,
+        template: `<vue-lazy-component class="custom-transition">
+    <st-series-sohu/>
+    <st-series-sohu-skeleton slot="skeleton"/>
+</vue-lazy-component>
+
+<vue-lazy-component class="custom-transition">
+    <st-movie-qq/>
+    <st-movie-qq-skeleton slot="skeleton"/>
+</vue-lazy-component>
+
+<vue-lazy-component class="custom-transition">
+    <st-live/>
+    <st-live-skeleton slot="skeleton"/>
+</vue-lazy-component>
+
+<vue-lazy-component class="custom-transition">
+    <st-niux/>
+    <st-niux-skeleton slot="skeleton"/>
+</vue-lazy-component>
+
+<vue-lazy-component class="custom-transition">
+    <st-mo-jin/>
+    <st-mo-jin-skeleton slot="skeleton"/>
+</vue-lazy-component>`
       }
     }
 }

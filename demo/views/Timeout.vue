@@ -2,12 +2,13 @@
     <div style="height: 100%;">
         <div class="index-d3 switch">
             <div class="d3-more" style="display: block;">
-              <h2>组件2s后加载</h2>
+              <h2>无论是否可见，组件都会在1s后加载</h2>
               <details>
                   <summary>查看代码示例</summary>
+                  <h3>Template</h3>
                   <pre v-highlightjs="code"><code class="html">{{ code }}</code></pre>
                 </details>
-              <vue-lazy-component :timeout="2000">
+              <vue-lazy-component :timeout="1000">
                 <st-series-sohu/>
                 <st-series-sohu-skeleton slot="skeleton"/>
               </vue-lazy-component>
@@ -44,8 +45,8 @@ export default {
 
     data () {
       return {
-        code: `<vue-lazy-component>
-    <st-series-sohu :timeout="2000"/>
+        code: `<vue-lazy-component :timeout="1000">
+    <st-series-sohu/>
     <st-series-sohu-skeleton slot="skeleton"/>
 </vue-lazy-component>
 `

@@ -30,6 +30,11 @@ const router = new Router({
       path: '/custom-transition',
       name: 'CustomTransition',
       component: (resolve) => require(['../views/CustomTransition'], resolve)
+    },
+    {
+      path: '/specific-viewport',
+      name: 'SpecificViewport',
+      component: (resolve) => require(['../views/SpecificViewport'], resolve)
     }
   ]
 })

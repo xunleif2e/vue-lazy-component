@@ -39,6 +39,10 @@
       direction: {
         type: String,
         default: 'vertical'
+      },
+      maxWaitingTime: {
+        type: Number,
+        default: 50
       }
     },
 
@@ -52,6 +56,7 @@
     },
 
     created () {
+      // 如果指定timeout则无论可见与否都是在timeout之后初始化
       if (this.timeout) {
         this.timer = setTimeout(() => {
           this.init()
@@ -61,6 +66,7 @@
 
     mounted () {
       if (!this.timeout) {
+        // 根据滚动方向来构造视口外边距，用于提前加载
         let rootMargin
         switch (this.direction) {
           case 'vertical':
@@ -70,6 +76,8 @@
             rootMargin = `0px ${this.threshold}`
             break
         }
+
+        // 观察视口与组件容器的交叉情况
         this.io = new window.IntersectionObserver(this.intersectionHandler, {
           rootMargin,
           root: this.viewport
@@ -79,12 +87,14 @@
     },
 
     beforeDestroy () {
+      // 在组件销毁前取消观察
       if (this.io) {
         this.io.unobserve(this.$el)
       }
     },
 
     methods: {
+      // 交叉情况变化处理函数
       intersectionHandler (entries) {
         if (entries[0].intersectionRatio > 0) {
           this.init()
@@ -92,10 +102,17 @@
         }
       },
 
+      // 处理组件和骨架组件的切换
       init () {
+        // 此时说明骨架组件即将被切换
         this.$emit('beforeInit')
         this.$emit('before-init')
+
+        // 此时可以准备加载懒加载组件的资源
         this.loading = true
+
+        // 由于函数会在主线程中执行，加载懒加载组件非常耗时，容易卡顿
+        // 所以在requestAnimationFrame回调中延后执行
         this.requestAnimationFrame(() => {
           this.isInit = true
           this.$emit('init')
@@ -103,6 +120,14 @@
       },
 
       requestAnimationFrame (callback) {
+        // 防止等待太久没有执行回调
+        // 设置最大等待时间
+        setTimeout(() => {
+          if (this.isInit) return
+          callback()
+        }, this.maxWaitingTime)
+
+        // 兼容不支持requestAnimationFrame 的浏览器
         return (window.requestAnimationFrame || ((callback) => setTimeout(callback, 1000 / 60)))(callback)
       }
     }

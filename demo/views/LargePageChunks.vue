@@ -4,11 +4,11 @@
             <div class="d3-more" style="display: block;">
                 <h2>组件即将可见时自动加载，配合 webpack 做到组件代码异步分包载入</h2>
                 <details>
-                  <summary>查看代码示例（template）</summary>
+                  <summary>查看代码示例</summary>
+                  <h3>Template</h3>
                   <pre v-highlightjs="template"><code class="html">{{ template }}</code></pre>
-                </details>
-                <details>
-                  <summary>查看代码示例（js）</summary>
+
+                  <h3>Script</h3>
                   <pre v-highlightjs="js"><code class="javascript">{{ js }}</code></pre>
                 </details>
                 <template v-for="i in 10">
@@ -84,12 +84,6 @@ export default {
       },
       StMoJin (resolve) {
         require(['@/components/StMoJin'], resolve)
-      }
-    },
-
-    methods: {
-      reportFirstScreen () {
-
       }
     },
 

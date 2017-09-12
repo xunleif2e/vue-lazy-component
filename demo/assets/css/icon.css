@@ -1,0 +1,58 @@
+/* icon */
+.ico-file{width: 32px;height: 32px;display: inline-block;vertical-align: middle;background: url(../img/spr-icon.png) -384px 0 no-repeat;}
+.ico-bt-file{background-position: 0 0}
+.ico-bt-link{background-position: -32px 0}
+.ico-chm{background-position: -64px 0}
+.ico-xls{background-position: -96px 0}
+.ico-link{background-position: -128px 0}
+.ico-pdf{background-position: -160px 0}
+.ico-doc{background-position: -192px 0}
+.ico-ppt{background-position: -224px 0}
+.ico-txt{background-position: -256px 0}
+.ico-word{background-position: -288px 0}
+.ico-install{background-position: -320px 0}
+.ico-music{background-position: -352px 0}
+.ico-unknow{background-position: -384px 0}
+.ico-pic{background-position: -416px 0}
+.ico-apk{background-position: -448px 0}
+.ico-exe{background-position: -480px 0}
+.ico-ipa{background-position: -512px 0}
+.ico-ipsw{background-position: -544px 0}
+.ico-iso{background-position: -576px 0}
+.ico-group{background-position: -608px 0}
+.ico-video{background-position: -832px 0}
+.ico-avi{background-position: -640px 0}
+.ico-flv{background-position: -672px 0}
+.ico-mkv{background-position: -704px 0}
+.ico-mov{background-position: -736px 0}
+.ico-mp4{background-position: -768px 0}
+.ico-mpg{background-position: -800px 0}
+.ico-rm{background-position: -864px 0}
+.ico-rmvb{background-position: -896px 0}
+.ico-wmv{background-position: -928px 0}
+.ico-rar{background-position: -960px 0}
+
+/* 会员图标 vip */
+.icvip{display:inline-block;width:42px;height:12px;background:url(../img/ic_vip.png) no-repeat 0 999em;overflow:hidden;vertical-align:-1px;margin: 0 0 0 2px;}
+.icvip00{width: 36px;background-position: 0 0} .icvip01{background-position: -37px 0} .icvip02{background-position: -80px 0} .icvip03{background-position: -123px 0} .icvip04{background-position: -166px 0} .icvip05{background-position: -209px 0} .icvip06{background-position: -252px 0} .icvip00hui{background-position: 0 -18px}
+.icvip00hui{width: 35px;background-position: 0px -18px}.icvip01hui{background-position: -37px -18px} .icvip02hui{background-position: -80px -18px} .icvip03hui{background-position: -123px -18px} .icvip04hui{background-position: -166px -18px} .icvip05hui{background-position: -209px -18px} .icvip06hui{background-position: -252px -18px}
+/* gold vip */
+.icgold00{width: 35px;background-position: 0 -36px} .icgold01{background-position: -37px -36px} .icgold02{background-position: -80px -36px} .icgold03{background-position: -123px -36px} .icgold04{background-position: -166px -36px} .icgold05{background-position: -209px -36px} .icgold06{background-position: -252px -36px} .icgold07{background-position: -295px -36px} .icgold00hui{background-position: 0 -54px}
+.icgold00hui{width: 35px;background-position: 0px -54px} .icgold01hui{background-position: -37px -54px} .icgold02hui{background-position: -80px -54px} .icgold03hui{background-position: -123px -54px} .icgold04hui{background-position: -166px -54px} .icgold05hui{background-position: -209px -54px} .icgold06hui{background-position: -252px -54px} .icgold07hui{background-position: -295px -54px}
+/* super vip */
+.icsuper00{width: 35px;background-position: 0 -72px} .icsuper01{background-position: -37px -72px} .icsuper02{background-position: -80px -72px} .icsuper03{background-position: -123px -72px} .icsuper04{background-position: -166px -72px} .icsuper05{background-position: -209px -72px} .icsuper06{background-position: -252px -72px} .icsuper07{background-position: -295px -72px} .icsuper00hui{background-position: 0 -90px}
+.icsuper00hui{width: 35px;background-position: 0px -90px} .icsuper01hui{background-position: -37px -90px} .icsuper02hui{background-position: -80px -90px} .icsuper03hui{background-position: -123px -90px} .icsuper04hui{background-position: -166px -90px} .icsuper05hui{background-position: -209px -90px}
+/* another */
+.icnian{width:12px;height:12px; background-position: 0px -108px;} .icnianhui{width:12px;height:12px; background-position: 0px -128px} .icdongjie{width:16px;height:16px; background-position: -19px -109px}
+.icdongjiehui{width:16px;height:16px; background-position: -19px -128px} .icshuai{width:16px;height:16px; background-position: -38px -108px} .icshuaihui{width:16px;height:16px; background-position: -38px -128px}
+.icqiye{width:16px;height:16px; background-position: -57px -109px} .icqiyehui{width:16px;height:16px; background-position: -57px -128px}
+.ichongren{width:16px;height:16px; background-position: -76px -109px} .ichongrenhui{width:16px;height:16px; background-position: -76px -128px}
+.icbao{width:16px;height:16px; background-position: -95px -109px} .icbaohui{width:16px;height:16px; background-position: -95px -128px}
+.icxun{width:15px;height:16px; background-position: -116px -109px} .icxunhui{width:15px;height:16px; background-position: -116px -128px}
+.icgold{width:15px;height:16px; background-position: -136px -109px} .icgoldhui{width:15px;height:14px; background-position: -136px -128px}
+.icgrow{width:12px;height:14px; background-position: -155px -109px;} .icdown{width:12px;height:14px; background-position: -155px -128px;}
+.ickuainiao{background-position: -338px 0;width: 36px;} 
+.ickuainiaohui{background-position: -338px -18px}
+.icshangxing{background-position: -380px 0;width: 36px} 
+.icshangxinghui{background-position: -380px -18px;}
+
