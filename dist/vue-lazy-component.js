@@ -140,6 +140,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VueLazyComponent',
@@ -165,6 +169,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     direction: {
       type: String,
       default: 'vertical'
+    },
+    maxWaitingTime: {
+      type: Number,
+      default: 50
     }
   },
 
@@ -172,12 +180,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       isInit: false,
       timer: null,
-      io: null
+      io: null,
+      loading: false
     };
   },
   created: function created() {
     var _this = this;
 
+    // 如果指定timeout则无论可见与否都是在timeout之后初始化
     if (this.timeout) {
       this.timer = setTimeout(function () {
         _this.init();
@@ -186,6 +196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   mounted: function mounted() {
     if (!this.timeout) {
+      // 根据滚动方向来构造视口外边距，用于提前加载
       var rootMargin = void 0;
       switch (this.direction) {
         case 'vertical':
@@ -195,6 +206,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           rootMargin = '0px ' + this.threshold;
           break;
       }
+
+      // 观察视口与组件容器的交叉情况
       this.io = new window.IntersectionObserver(this.intersectionHandler, {
         rootMargin: rootMargin,
         root: this.viewport
@@ -203,51 +216,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   beforeDestroy: function beforeDestroy() {
-    if (!this.io) {
+    // 在组件销毁前取消观察
+    if (this.io) {
       this.io.unobserve(this.$el);
     }
   },
 
 
   methods: {
-    intersectionHandler: function intersectionHandler(_ref) {
-      var _ref2 = babelHelpers.slicedToArray(_ref, 1),
-          _ref2$ = _ref2[0],
-          time = _ref2$.time,
-          rootBounds = _ref2$.rootBounds,
-          boundingClientRect = _ref2$.boundingClientRect,
-          intersectionRect = _ref2$.intersectionRect,
-          intersectionRatio = _ref2$.intersectionRatio,
-          target = _ref2$.target;
-
-      if (intersectionRatio > 0) {
+    // 交叉情况变化处理函数
+    intersectionHandler: function intersectionHandler(entries) {
+      if (entries[0].intersectionRatio > 0) {
         this.init();
         this.io.unobserve(this.$el);
       }
     },
+
+
+    // 处理组件和骨架组件的切换
     init: function init() {
       var _this2 = this;
 
+      // 此时说明骨架组件即将被切换
       this.$emit('beforeInit');
-      this.requestIdleCallback(function (deadline) {
+      this.$emit('before-init');
+
+      // 此时可以准备加载懒加载组件的资源
+      this.loading = true;
+
+      // 由于函数会在主线程中执行，加载懒加载组件非常耗时，容易卡顿
+      // 所以在requestAnimationFrame回调中延后执行
+      this.requestAnimationFrame(function () {
         _this2.isInit = true;
         _this2.$emit('init');
-      }, {
-        timeout: 50
       });
     },
-    requestIdleCallback: function requestIdleCallback() {
-      return (window.requestIdleCallback || function (cb) {
-        var start = Date.now();
-        return setTimeout(function () {
-          cb({
-            didTimeout: false,
-            timeRemaining: function timeRemaining() {
-              return Math.max(0, 50 - (Date.now() - start));
-            }
-          });
-        }, 1);
-      }).apply(null, arguments);
+    requestAnimationFrame: function requestAnimationFrame(callback) {
+      var _this3 = this;
+
+      // 防止等待太久没有执行回调
+      // 设置最大等待时间
+      setTimeout(function () {
+        if (_this3.isInit) return;
+        callback();
+      }, this.maxWaitingTime);
+
+      // 兼容不支持requestAnimationFrame 的浏览器
+      return (window.requestAnimationFrame || function (callback) {
+        return setTimeout(callback, 1000 / 60);
+      })(callback);
     }
   }
 });
@@ -457,14 +474,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "tag": _vm.tagName,
       "name": "lazy-component"
+    },
+    on: {
+      "before-enter": function (el) { return _vm.$emit('before-enter', el); },
+      "before-leave": function (el) { return _vm.$emit('before-leave', el); },
+      "after-enter": function (el) { return _vm.$emit('after-enter', el); },
+      "after-leave": function (el) { return _vm.$emit('after-leave', el); }
     }
   }, [(_vm.isInit) ? _c('div', {
     key: "component"
-  }, [_vm._t("default")], 2) : (_vm.$slots.skeleton) ? _c('div', {
+  }, [_vm._t("default", null, {
+    loading: _vm.loading
+  })], 2) : (_vm.$slots.skeleton) ? _c('div', {
     key: "skeleton"
   }, [_vm._t("skeleton")], 2) : _c('div', {
     key: "loading"
-  }, [_vm._v("\n    loading\n  ")])])
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

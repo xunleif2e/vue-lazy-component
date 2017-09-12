@@ -2,11 +2,9 @@
 
 > Vue.js 2.0 组件级懒加载方案
 
-![](cover.jpg)
-
-- 支持 组件可见或即将可见时懒加载
+- 支持 组件可见或即将可见时懒加载
 - 支持 组件延时加载
-- 支持 加载组件前展示组件骨架，提高用户体验
+- 支持 加载组件前展示组件骨架，提高用户体验
 - 支持 懒加载组件分包异步加载
 
 ## 安装
@@ -16,7 +14,7 @@ npm install @xunlei/vue-lazy-component
 
 ## 在线Demo
 
-https://xunleif2e.github.io/vue-lazy-component/demo/dist
+https://xunleif2e.github.io/vue-lazy-component/demo/dist/index.html
 
 ## 使用
 
@@ -78,12 +76,12 @@ export default {
 | 事件名                    | 说明  | 事件参数
 |-------------------------|-------|------|
 | before-init | 模块可见或延时截止导致准备开始加载懒加载模块 | - |
-| init | 开始加载懒加载模块，此时骨架组件开始消失 | - |
-| before-enter | 懒加载模块开始进入 | el |
-| before-leave | 骨架组件开始离开 | el |
-| after-leave | 骨架组件已经离开 | el |
-| after-enter | 懒加载模快已经进入 | el |
-| after-init | 初始化完成 | - |
+| init | 开始加载懒加载模块，此时骨架组件开始消失 | - |
+| before-enter | 懒加载模块开始进入 | el |
+| before-leave | 骨架组件开始离开 | el |
+| after-leave | 骨架组件已经离开 | el |
+| after-enter | 懒加载模快已经进入 | el |
+| after-init | 初始化完成 | - |
 
 
 ## 注意
@@ -107,7 +105,9 @@ export default {
 
 https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill
 
-> webpack 分包异步加载方式依赖 `scope slot`, 需要 Vue 版本大于2.1.0
+> webpack 分包异步加载方式依赖 `Scoped Component Slots`, 需要 Vue 版本大于2.1.0
+
+https://cn.vuejs.org/v2/guide/components.html#作用域插槽
 
 ## ChangeLog
 - [1.0.0] 2017-09-11
