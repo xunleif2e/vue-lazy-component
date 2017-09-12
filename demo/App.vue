@@ -9,7 +9,7 @@
       <router-link class="link" to="/specific-viewport">Demo5: 特定视口内懒加载 </router-link>
     </header>
     <router-view class="page-container"></router-view>
-    <a href="https://github.com/you" target="_blank">
+    <a href="https://github.com/xunleif2e/vue-lazy-component" target="_blank">
       <img
         style="position: fixed; top: 0; right: 0; border: 0;z-index:1000;"
         src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"

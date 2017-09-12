@@ -2,9 +2,12 @@
 
 > Vue.js 2.0 组件级懒加载方案
 
+![](cover.jpg)
+
 - 支持 组件可见或即将可见时懒加载
 - 支持 组件延时加载
 - 支持 加载组件前展示组件骨架，提高用户体验
+- 支持 懒加载组件分包异步加载
 
 ## 安装
 ```
@@ -103,6 +106,8 @@ export default {
 ### IntersectionObserver API polyfill
 
 https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill
+
+> webpack 分包异步加载方式依赖 `scope slot`, 需要 Vue 版本大于2.1.0
 
 ## ChangeLog
 - [1.0.0] 2017-09-11
