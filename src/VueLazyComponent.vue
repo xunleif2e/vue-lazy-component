@@ -80,7 +80,8 @@
         // 观察视口与组件容器的交叉情况
         this.io = new window.IntersectionObserver(this.intersectionHandler, {
           rootMargin,
-          root: this.viewport
+          root: this.viewport,
+          threshold: [ Number.MIN_VALUE ]
         })
         this.io.observe(this.$el)
       }
