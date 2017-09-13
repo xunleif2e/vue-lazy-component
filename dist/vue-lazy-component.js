@@ -226,7 +226,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     // 交叉情况变化处理函数
     intersectionHandler: function intersectionHandler(entries) {
-      if (entries[0].isIntersecting) {
+      if (
+      // 正在交叉
+      entries[0].isIntersecting ||
+      // 交叉率大于0
+      entries[0].intersectionRatio) {
         this.init();
         this.io.unobserve(this.$el);
       }
