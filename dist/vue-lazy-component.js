@@ -211,7 +211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.io = new window.IntersectionObserver(this.intersectionHandler, {
         rootMargin: rootMargin,
         root: this.viewport,
-        threshold: [Number.MIN_VALUE]
+        threshold: [0, Number.MIN_VALUE, 0.01]
       });
       this.io.observe(this.$el);
     }
