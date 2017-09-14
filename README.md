@@ -7,8 +7,8 @@
 
 - 支持 组件可见或即将可见时懒加载
 - 支持 组件延时加载
-- 支持 加载组件前展示组件骨架，提高用户体验
-- 支持 懒加载组件分包异步加载
+- 支持 加载真实组件前展示骨架组件，提高用户体验
+- 支持 真实组件代码分包异步加载
 
 ## 安装
 ```
@@ -68,9 +68,9 @@ export default {
 
 | 参数                    | 说明  | 类型 | 可选值 | 默认值 |
 |-------------------------|-------|------|--------|--------|
-| viewport | 组件的视口，如果组件是在页面容器内滚动，视口就是该容器 | HTMLElement | true      | `null`，代表window |
+| viewport | 组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器 | HTMLElement | true      | `null`，代表视窗 |
 | direction | 视口的滚动方向, `vertical`代表垂直方向，`horizontal`代表水平方向  | String | true      | `vertical` |
-| threshold | 预加载阀值, css单位  | String | true      | `0px` |
+| threshold | 预加载阈值, css单位  | String | true      | `0px` |
 | tagName | 包裹组件的外层容器的标签名  | String | true  | `div` |
 | timeout | 等待时间，如果指定了时间，不论可见与否，在指定时间之后自动加载  | Number | true    | - |
 
@@ -89,7 +89,7 @@ export default {
 
 ## 注意
 
-> 该项目依赖 [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)，如需在较低版本浏览器运行，需要引入 polyfill
+> 1. 该项目依赖 [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)，如需在较低版本浏览器运行，需要引入 polyfill
 
 ### IntersectionObserver API 桌面端兼容性
 
@@ -108,7 +108,7 @@ export default {
 
 https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill
 
-> webpack 分包异步加载方式依赖 `Scoped Component Slots`, 需要 Vue 版本大于2.1.0
+> 2. webpack 分包异步加载方式依赖 `Scoped Component Slots`, 需要 Vue 版本大于2.1.0
 
 https://cn.vuejs.org/v2/guide/components.html#作用域插槽
 
