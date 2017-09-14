@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="page-header">
-      <h1>Vue Lazy Component Demos</h1>
+      <h1>Vue Lazy Component Demos  <a href="https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component"><img src="https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component.svg" alt="npm version" height="18"></a></h1>
       <router-link class="link" to="/large-page">Demo1: 超长页面懒加载</router-link>
       <router-link class="link" to="/timeout">Demo2: 延时加载</router-link>
       <router-link class="link" to="/custom-transition">Demo3: 自定义过渡效果</router-link>

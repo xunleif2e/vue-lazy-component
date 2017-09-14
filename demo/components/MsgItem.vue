@@ -6,7 +6,8 @@
     <div class="msg-dlg-box" :class="myself ? 'myself' : 'other'">
       <a class="user-pic">
         <vue-lazy-component
-          :view-port="$parent.$el"
+          v-if="root"
+          :viewport="root"
         >
           <img :src="`https://api.adorable.io/avatars/40/${userid}@adorable.png`">
           <img slot="skeleton" src="../assets/img/timg.jpeg">
@@ -31,6 +32,16 @@
       usernick: String,
       time: String,
       myself: Boolean
+    },
+
+    data () {
+      return {
+        root: null
+      }
+    },
+
+    mounted () {
+      this.root = this.$parent.$el
     }
   }
 </script>
