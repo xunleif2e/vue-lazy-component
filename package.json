@@ -25,7 +25,9 @@
     "dev": "node build/dev-server.js",
     "build": "npm run build:library && npm run build:demo",
     "build:demo": "node build/build.js",
-    "build:library": "webpack --config build/webpack.lib.conf.js"
+    "build:library": "webpack --config build/webpack.lib.conf.js",
+    "commit": "git-cz",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "npm": "^5.2.0"
@@ -44,6 +46,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chalk": "^1.1.3",
+    "commitizen": "^2.9.6",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",

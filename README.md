@@ -1,7 +1,13 @@
 # Vue Lazy Component
 
 
-[![npm version](https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component.svg)](https://badge.fury.io/js/%40xunlei%2Fvue-lazy-component)
+[![npm](https://img.shields.io/npm/v/@xunlei/vue-lazy-component.svg)](https://www.npmjs.com/package/@xunlei/vue-lazy-component)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Git flow work flow](https://img.shields.io/badge/git--flow-workflow-brightgreen.svg)](https://github.com/nvie/gitflow/)
+[![GitHub stars](https://img.shields.io/github/stars/xunleif2e/vue-lazy-component.svg)](https://github.com/xunleif2e/vue-lazy-component/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/xunleif2e/vue-lazy-component.svg)](https://github.com/xunleif2e/vue-lazy-component/issues)
+[![GitHub forks](https://img.shields.io/github/forks/xunleif2e/vue-lazy-component.svg)](https://github.com/xunleif2e/vue-lazy-component/network)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/xunleif2e/vue-lazy-component/master/LICENSE)
 
 > Vue.js 2.0 组件级懒加载方案
 
@@ -133,7 +139,21 @@ npm run build:library
 
 # build demo
 npm run build:demo
+
+# commit use commitizen
+npm run commit
+
+# pre publish
+npm run prepublish
 ```
+
+## Roadmap
+
+- SSR 支持 @ v1.1.0
+
+- UI单元测试 @ v1.2.0
+
+- 减少性能开销 @ v1.3.0
 
 ## License
 
