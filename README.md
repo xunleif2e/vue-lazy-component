@@ -118,10 +118,6 @@ https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill
 
 https://cn.vuejs.org/v2/guide/components.html#作用域插槽
 
-## ChangeLog
-- [1.0.0] 2017-09-11
-  - 实现懒加载组件的基本功能
-
 ## Development Setup
 
 ``` bash
@@ -145,6 +141,9 @@ npm run commit
 
 # pre publish
 npm run prepublish
+
+# generate changelog
+npm run changelog
 ```
 
 ## Roadmap
