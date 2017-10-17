@@ -157,7 +157,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: 'div'
     },
     viewport: {
-      type: window.HTMLElement,
+      type: typeof window !== 'undefined' ? window.HTMLElement : Object,
       default: function _default() {
         return null;
       }

@@ -29,7 +29,7 @@
         default: 'div'
       },
       viewport: {
-        type: window.HTMLElement,
+        type: typeof window !== 'undefined' ? window.HTMLElement : Object,
         default: () => null
       },
       threshold: {
