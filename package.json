@@ -1,7 +1,7 @@
 {
   "name": "@xunlei/vue-lazy-component",
   "description": "Vue.js 2.0 组件级懒加载方案",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "private": false,
   "main": "dist/vue-lazy-component.js",
   "files": [
