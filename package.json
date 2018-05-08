@@ -1,7 +1,7 @@
 {
   "name": "@xunlei/vue-lazy-component",
   "description": "Vue.js 2.0 组件级懒加载方案",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "main": "dist/vue-lazy-component.js",
   "files": [
@@ -29,9 +29,6 @@
     "commit": "git-cz",
     "prepublish": "npm run build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
-  },
-  "dependencies": {
-    "npm": "^5.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
