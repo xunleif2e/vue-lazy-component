@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,11 +81,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(2)(
+var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(1),
   /* template */
-  __webpack_require__(3),
+  __webpack_require__(4),
   /* styles */
   null,
   /* scopeId */
@@ -118,10 +118,14 @@ module.exports = Component.exports
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -141,7 +145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+exports.default = {
   name: 'VueLazyComponent',
 
   props: {
@@ -268,10 +272,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       })(callback);
     }
   }
-});
+};
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+  * vue-lazy-component
+  * (c) 2017 赵兵
+  * @license MIT
+  */
+var VueLazyComponent = __webpack_require__(0);
+var vueLazyComponent = {};
+
+/**
+ * Plugin API
+ */
+vueLazyComponent.install = function (Vue, options) {
+  Vue.component(VueLazyComponent.name, VueLazyComponent);
+};
+
+vueLazyComponent.component = VueLazyComponent;
+
+/**
+ * Auto install
+ */
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(vueLazyComponent);
+}
+
+module.exports = vueLazyComponent;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -368,7 +405,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -403,36 +440,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-175ab158", module.exports)
   }
 }
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
-  * vue-lazy-component
-  * (c) 2017 赵兵
-  * @license MIT
-  */
-const VueLazyComponent = __webpack_require__(0)
-const vueLazyComponent = {}
-
-/**
- * Plugin API
- */
-vueLazyComponent.install = function (Vue, options) {
-  Vue.component(VueLazyComponent.name, VueLazyComponent)
-}
-
-vueLazyComponent.component = VueLazyComponent
-
-/**
- * Auto install
- */
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(vueLazyComponent)
-}
-
-module.exports = vueLazyComponent
 
 /***/ })
 /******/ ]);
