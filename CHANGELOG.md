@@ -1,5 +1,35 @@
-<a name="1.0.9"></a>
-## [1.0.9](https://github.com/xunleif2e/vue-lazy-component/compare/v1.0.7...v1.0.9) (2017-09-29)
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/xunleif2e/vue-lazy-component/compare/v1.1.0...v1.1.2) (2018-05-23)
+
+
+### Bug Fixes
+
+* **build:** 修复库输出的入口文件dist/vue-lazy-component.js包含const关键字的问题 ([7b852e8](https://github.com/xunleif2e/vue-lazy-component/commit/7b852e8)), closes [#10](https://github.com/xunleif2e/vue-lazy-component/issues/10)
+
+
+
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/xunleif2e/vue-lazy-component/compare/v1.0.10...v1.1.0) (2017-10-18)
+
+
+### Code Refactoring
+
+* **ssr:** support ssr ([848f0c6](https://github.com/xunleif2e/vue-lazy-component/commit/848f0c6))
+
+
+### BREAKING CHANGES
+
+* **ssr:** transition style should require '@xunlei/vue-lazy-component/src/transition.css'
+
+
+
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/xunleif2e/vue-lazy-component/compare/v1.0.9...v1.0.10) (2017-10-17)
+
+
+### Features
+
+* **ssr:** suport ssr ([b682fae](https://github.com/xunleif2e/vue-lazy-component/commit/b682fae))
 
 
 
