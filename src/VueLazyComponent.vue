@@ -29,7 +29,7 @@
         default: 'div'
       },
       viewport: {
-        type: window.HTMLElement,
+        type: typeof window !== 'undefined' ? window.HTMLElement : Object,
         default: () => null
       },
       threshold: {
@@ -139,33 +139,4 @@
     }
   }
 </script>
-
-<style>
-    .lazy-component-enter {
-      opacity: 0;
-    }
-
-    .lazy-component-enter-to {
-       opacity: 1;
-    }
-
-    .lazy-component-enter-active {
-      transition: opacity 0.3s 0.2s;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
-    .lazy-component-leave {
-      opacity: 1;
-    }
-
-    .lazy-component-leave-to {
-      opacity: 0;
-    }
-
-    .lazy-component-leave-active {
-      transition: opacity 0.5s;
-    }
-</style>
 

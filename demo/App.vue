@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import '../src/transition.css'
   import '@/assets/css/common.css'
   import '@/assets/css/d3.css'
   import '@/assets/css/acc.css'
