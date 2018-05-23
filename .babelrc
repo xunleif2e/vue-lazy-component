@@ -1,8 +1,9 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
-  ],
-  "plugins": [
-    "external-helpers"
+    ["env", {
+      "targets": {
+        "browsers": ["cover 99.5%"]
+      }
+    }]
   ]
 }
