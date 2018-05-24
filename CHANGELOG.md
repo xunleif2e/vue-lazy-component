@@ -1,5 +1,5 @@
-<a name="1.1.2"></a>
-## [1.1.2](https://github.com/xunleif2e/vue-lazy-component/compare/v1.1.0...v1.1.2) (2018-05-23)
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/xunleif2e/vue-lazy-component/compare/v1.1.2...v1.1.3) (2018-05-24)
 
 
 ### Bug Fixes
