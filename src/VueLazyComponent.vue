@@ -5,7 +5,7 @@
     @after-enter="(el) => $emit('after-enter', el)"
     @after-leave="(el) => $emit('after-leave', el)"
   >
-    <div v-if="isInit" key="component">
+    <div v-if="loading" key="component">
       <slot :loading="loading"></slot>
     </div>
     <div v-else-if="$slots.skeleton" key="skeleton">
@@ -43,12 +43,15 @@
       maxWaitingTime: {
         type: Number,
         default: 50
+      },
+      isAutoDestory: {  // destory after not visible
+        type: Boolean,
+        default: false
       }
     },
 
     data () {
       return {
-        isInit: false,
         timer: null,
         io: null,
         loading: false
@@ -97,14 +100,11 @@
     methods: {
       // 交叉情况变化处理函数
       intersectionHandler (entries) {
-        if (
-          // 正在交叉
-          entries[0].isIntersecting ||
-          // 交叉率大于0
-          entries[0].intersectionRatio
-        ) {
+        const  isIntersecting = entries[0].isIntersecting || entries[0].intersectionRatio
+        if ( isIntersecting ) {
           this.init()
-          this.io.unobserve(this.$el)
+        }else{
+          this.isAutoDestory && this.destory()
         }
       },
 
@@ -112,29 +112,21 @@
       init () {
         // 此时说明骨架组件即将被切换
         this.$emit('beforeInit')
-        this.$emit('before-init')
 
         // 此时可以准备加载懒加载组件的资源
         this.loading = true
 
-        // 由于函数会在主线程中执行，加载懒加载组件非常耗时，容易卡顿
-        // 所以在requestAnimationFrame回调中延后执行
-        this.requestAnimationFrame(() => {
-          this.isInit = true
-          this.$emit('init')
-        })
+        this.$emit('init')
       },
+      /**
+       * destory after not intersecting
+       */
+      destory () {
+        this.$emit('beforeDestory')
 
-      requestAnimationFrame (callback) {
-        // 防止等待太久没有执行回调
-        // 设置最大等待时间
-        setTimeout(() => {
-          if (this.isInit) return
-          callback()
-        }, this.maxWaitingTime)
+        this.loading = false
 
-        // 兼容不支持requestAnimationFrame 的浏览器
-        return (window.requestAnimationFrame || ((callback) => setTimeout(callback, 1000 / 60)))(callback)
+        this.$emit('destory')
       }
     }
   }
