@@ -77,13 +77,17 @@
             break
         }
 
-        // 观察视口与组件容器的交叉情况
-        this.io = new window.IntersectionObserver(this.intersectionHandler, {
-          rootMargin,
-          root: this.viewport,
-          threshold: [ 0, Number.MIN_VALUE, 0.01]
-        })
-        this.io.observe(this.$el)
+        try {
+          // 观察视口与组件容器的交叉情况
+          this.io = new window.IntersectionObserver(this.intersectionHandler, {
+              rootMargin,
+              root: this.viewport,
+              threshold: [0, Number.MIN_VALUE, 0.01]
+          });
+          this.io.observe(this.$el);
+        } catch (e) {
+          this.init()
+        }
       }
     },
 
